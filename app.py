@@ -14,7 +14,7 @@ def saludar (nombre):
 def verificar_edad(edad):
     return f'tienes {edad} años'
 
-@app.route('/users', methods=['POST', 'GET'])
+@app.route('/users', methods=['POST'])
 def store_user():
     return "se guardo el usuario"
 
@@ -29,6 +29,16 @@ def update_user():
         'age': request.form['age'],
         'method': request.method
     }
+
+@app.get('/users')
+def List_Users():
+    return [
+        {
+            'name': "jorge",
+            'apellido': "Gonzalez",
+            'edad':34
+        }
+    ]
 
 @app.errorhandler(404)
 def not_found(error):
